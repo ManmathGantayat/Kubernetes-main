@@ -27,7 +27,7 @@ spec:
         # Startup probe: checks if app is initialized
         startupProbe:
           httpGet:
-            path: /ready
+            path: /readyiii
             port: 8080
           failureThreshold: 10
           periodSeconds: 5
