@@ -29,9 +29,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(b"Starting")
         else:
-            self.send_response(200)
+            self.send_response(404)
             self.end_headers()
-            self.wfile.write(b"Hello World!")
+            self.wfile.write(b"not found")
 
 def slow_start():
     global READY
