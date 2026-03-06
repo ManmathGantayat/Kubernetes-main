@@ -19,23 +19,23 @@ spec:
         ports:
         - containerPort: 8080
 
-        # STARTUP PROBE (WRONG PATH INTENTIONALLY)
+        # Startup probe → CORRECT
         startupProbe:
           httpGet:
-            path: /wrongpath
+            path: /healthz
             port: 8080
-          failureThreshold: 3
+          failureThreshold: 10
           periodSeconds: 5
 
-        # READINESS PROBE (CORRECT)
+        # Readiness probe → WRONG PATH
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /wrongready
             port: 8080
           periodSeconds: 5
           failureThreshold: 3
 
-        # LIVENESS PROBE (CORRECT)
+        # Liveness probe → CORRECT
         livenessProbe:
           httpGet:
             path: /healthz
